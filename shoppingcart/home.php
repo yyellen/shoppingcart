@@ -1,6 +1,6 @@
 <?php
 require_once("../db_connect.php");
-$sql="SELECT * FROM shoppingcart_products WHERE valid=1 ORDER BY id ASC";
+$sql="SELECT * FROM shop_products WHERE valid=1 ORDER BY id ASC";
 $result = $conn->query($sql);
 $products=$result->fetch_all(MYSQLI_ASSOC);
 ?>
@@ -42,6 +42,8 @@ $products=$result->fetch_all(MYSQLI_ASSOC);
         section{
             background-color: #FFF;
         }
+
+
 
     </style>
   </head>
@@ -97,19 +99,19 @@ $products=$result->fetch_all(MYSQLI_ASSOC);
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="img/banner_1.png" class="d-block w-100" alt="...">
+                    <img src="img/banner_1.png" style="width: 8rem" class="d-block" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/banner_2.png" class="d-block w-100" alt="...">
+                    <img src="img/banner_2.png" style="width: 8rem" class="d-block" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/banner_3.png" class="d-block w-100" alt="...">
+                    <img src="img/banner_3.png" style="width: 8rem" class="d-block" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/banner_4.png" class="d-block w-100" alt="...">
+                    <img src="img/banner_4.png" style="width: 8rem" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/banner_5.png" class="d-block w-100" alt="...">
+                    <img src="img/banner_5.png" style="width: 8rem" class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -154,59 +156,93 @@ $products=$result->fetch_all(MYSQLI_ASSOC);
         <!-- 商品區 -->
         <section class=" container-fluid p-2 card shadow-sm">
             <div class="gx-5 ">
-                <h2 >活動商品</h2>
-                <div class="row-cols-1 row-cols-lg-4 row-cols-md-2 card-group">
-                
-                <?php foreach($products as $product): ?>
-                    <div class="col p-1">
-                        <div class="card p-1"> 
-                            <img src=<?=$product["image"]?> class="d-block w-100">
-                            <h5><?=$product["name"]?></h5>
-                            <h6>$ <?=$product["price"]?></h6>
-                            <!-- <div class="d-grid">
-                                <button class="btn btn-danger add-btn">加入購物車</button>
-                            </div> -->
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-                
-                </div>
-            </div>
-
-
-            <!-- <div class="pt-2">
-                    <h2>熱門商品</h2>
+                    <h2 >活動商品</h2>
                     <div class="row-cols-1 row-cols-lg-4 row-cols-md-2 card-group">
                     
                     <?php foreach($products as $product): ?>
                         <div class="col p-1">
-                            <div class="card p-1">
-                                <img src="https://fakeimg.pl/300x300/?retina=1&text=活動banner1" class="d-block w-100" alt="...">
+                            <div class="card p-1"> 
+                                <img src=<?=$product["image"]?> class="d-block w-100">
                                 <h5><?=$product["name"]?></h5>
-                                <h6>$ <?=$product["price"]?></h6>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>   
-                    
-                    </div>
-            </div>
-
-            <div class="pt-2">
-                    <h2>最新上架</h2>
-                    <div class="row-cols-1 row-cols-lg-4 row-cols-md-2 card-group">
-                    
-                    <?php foreach($products as $product): ?>
-                        <div class="col p-1">
-                            <div class="card p-1">
-                                <img src="https://fakeimg.pl/300x300/?retina=1&text=活動banner1" class="d-block w-100" alt="...">
-                                <h5><?=$product["name"]?></h5>
-                                <h6>$ <?=$product["price"]?></h6>
+                                <h6>$<?=$product["price"]?></h6>
                             </div>
                         </div>
                     <?php endforeach; ?>
                     
                     </div>
-            </div> -->
+
+            </div>
+
+            <div class="pt-2">
+                    <h2>熱門商品</h2>
+                    <div class="row-cols-1 row-cols-lg-4 row-cols-md-2 card-group">
+                        <div class="col p-1">
+                            <div class="card p-1">
+                                <img src="https://fakeimg.pl/300x300/?retina=1&text=活動banner1" class="d-block w-100" alt="...">
+                                <h5>商品名稱</h5>
+                                <h6>商品價錢</h6>
+                            </div>
+                        </div>
+                        <div class="col p-1">
+                            <div class="card p-1">
+                                <img src="https://fakeimg.pl/300x300/?retina=1&text=活動banner1" class="d-block w-100" alt="...">
+                                <h5>商品名稱</h5>
+                                <h6>商品價錢</h6>
+                            </div>
+                        </div>
+                        <div class="col p-1">
+                            <div class="card p-1">
+                                <img src="https://fakeimg.pl/300x300/?retina=1&text=活動banner1" class="d-block w-100" alt="...">
+                                <h5>商品名稱</h5>
+                                <h6>商品價錢</h6>
+                            </div>
+                        </div>
+                        <div class="col p-1">
+                            <div class="card p-1">
+                                <img src="https://fakeimg.pl/300x300/?retina=1&text=活動banner1" class="d-block w-100" alt="...">
+                                <h5>商品名稱</h5>
+                                <h6>商品價錢</h6>
+                            </div>
+                        </div>
+                    
+                    </div>
+
+            </div>
+
+            <div class="pt-2">
+                    <h2>最新上架</h2>
+                    <div class="row-cols-1 row-cols-lg-4 row-cols-md-2 card-group">
+                        <div class="col p-1">
+                            <div class="card p-1">
+                                <img src="https://fakeimg.pl/300x300/?retina=1&text=活動banner1" class="d-block w-100" alt="...">
+                                <h5>商品名稱</h5>
+                                <h6>商品價錢</h6>
+                            </div>
+                        </div>
+                        <div class="col p-1">
+                            <div class="card p-1">
+                                <img src="https://fakeimg.pl/300x300/?retina=1&text=活動banner1" class="d-block w-100" alt="...">
+                                <h5>商品名稱</h5>
+                                <h6>商品價錢</h6>
+                            </div>
+                        </div>
+                        <div class="col p-1">
+                            <div class="card p-1">
+                                <img src="https://fakeimg.pl/300x300/?retina=1&text=活動banner1" class="d-block w-100" alt="...">
+                                <h5>商品名稱</h5>
+                                <h6>商品價錢</h6>
+                            </div>
+                        </div>
+                        <div class="col p-1">
+                            <div class="card p-1">
+                                <img src="https://fakeimg.pl/300x300/?retina=1&text=活動banner1" class="d-block w-100" alt="...">
+                                <h5>商品名稱</h5>
+                                <h6>商品價錢</h6>
+                            </div>
+                        </div>
+                    
+                    </div>
+            </div>
         </section>
         <!-- 商品區 -->
     </div>
@@ -282,34 +318,9 @@ $products=$result->fetch_all(MYSQLI_ASSOC);
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
-    <!-- jQuery minified 3.6.0-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-    <!-- axios 0.26.0-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script>
-
-        $(".add-btn").click(function(){
-            let id=$(this).data("id");
-            // console.log(id)
-            let formData=new FormData();
-            formData.append('id', id);
-
-            axios({
-            method: "post",
-            url: "/store/api/add-cart.php",
-            data: formData,
-            headers: {'Content-Type': "multipart/form-data"}
-            })
-            .then(function(response){
-                console.log(response.data)
-            })
-            .catch(function(response){
-                console.log(response)
-            })
-        })
-    </script>
+    <!-- jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
 
   </body>
 </html>
