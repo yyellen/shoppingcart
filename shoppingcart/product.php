@@ -6,7 +6,6 @@ $result = $conn->query($sql);
 $product = $result->fetch_assoc();
 ?>
 
-
 <!doctype html>
 <html lang="en">
 
@@ -31,11 +30,11 @@ $product = $result->fetch_assoc();
 
 
     <style>
-    body {
-        color: #121212;
-        font-family: 'Noto Sans SC', sans-serif;
-        background-color: #EEE;
-    }
+        body {
+            color: #121212;
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #EEE;
+        }
     </style>
 
 </head>
@@ -75,83 +74,75 @@ $product = $result->fetch_assoc();
         </div>
     </nav>
 
-    <div class="container p-3">
-        <div class="card shadow-sm">
-            <section class="py-3 pt-5">
-                <div class="container px-lg-5 my-5">
-                    <div class="row">
 
-                        <div class="col-md-6 text-center">
-                            <img class="card-img-top d-block mx-auto" src=<?= $product["image"] ?>
-                                style="width: 350px; height: 350px;" />
-                        </div>
-
-                        <div class="col-md-6">
-
-                            <h1 class="fs-2 fw-bolder"><?= $product["name"] ?></h1>
-
-                            <div class="fs-5 mb-5">
-                                <p class="text-decoration-line-through"> 原價 $<?= $product["o-price"] ?> </p>
-                                <p>$<?= $product["price"] ?></p>
-                            </div>
-                            <div>
-                                <p class="small fw-bolder">
-                                    購買數量
-                                </p>
-                            </div>
-
-                            <div class="d-flex">
-
-                                <div class="input-group mb-3">
-                                    <select class="custom-select" id="inputGroupSelect02" style="max-width: 15rem">
-                                        <option selected>請選擇數量</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
-                                    <!-- 按鈕新增d-grid屬性 -->
-                                    <div class="px-lg-2 ">
-                                        <a class="btn btn-danger flex-shrink-0 px-md-3" type="button" href="cart.html">
-                                            加入購物車
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<header  class="container m-3 card shadow-sm mx-auto">
+            <div class="container">
+                <div class="row">
+                    <!-- 相片 -->
+                    <div class="col-md-4 p-3 d-flex align-items-center">
+                        <img class="card-img-top d-block mx-auto" src="img/product_1.jpg">
                     </div>
+                    <!-- 相片 -->
 
+                    <!-- 商品內容 -->
+                    <div class="col-md-8 ">
+
+                    <!-- 商品資訊 -->
+                    <div class="mt-3">
+                        <h1 class="fs-1 fw-bolder">
+                            <?= $product["name"] ?>
+                        </h1>
+                        
+                        <div class="fs-6">
+                            <p class="text-decoration-line-through"> 原價 $
+                                <?= $product["o-price"] ?>
+                            </p>
+                            <p class="fs-5 text-danger fw-bolder">優惠價$
+                                <?= $product["price"] ?>
+                            </p>
+                        </div>
+
+                    </div>
+                    <!-- 商品資訊 -->
+
+                    <!-- 訂購按鈕 -->
+                        <p class="small fw-bolder pt-5">購買數量</p>
+                        <div>
+                                <div class="input-group" role="group" aria-label="Basic mixed styles example">
+                                    <button class="btn border-danger text-danger" type="button" value="-">-</button>
+                                    <input class="btn border-danger text-dark col-2 " type="text" value="0">
+                                    <button class="btn border-danger text-danger">+</button>
+                                </div>
+                                <button class="btn btn-danger mt-3 add-btn">加入購物車</button>        
+                        </div>
+                            <p id="message"  class="text-success"></p>
+
+                        </div>
+                    <!-- 訂購按鈕 -->
+ 
+                    </div>
+                    <!-- 商品內容 -->
+
+                    </div>
                 </div>
+</header>
 
-        </div>
-
-        <div class="container">
+<section>
+        <div class="container card shadow-sm">
             <hr>
-            <div>
-                <h2 class="fs-3 fw-bolder" style="color: #cf1515;">本商品詳細介紹</h2>
+            <div class="container">
+                <h2 class="fs-3 fw-bolder text-danger">商品詳細介紹</h2>
                 <div class="align-items-center justify-content-center">
                     <?= $product["desc"] ?>
                 </div>
             </div>
         </div>
+</section>
 
-        </section>
-
-    </div>
-    </div>
-
-
-
-
+    <!-- 頁尾資訊 -->
     <div class="container-fluid mt-3 card">
-        <footer class="py-5">
-            <div class="row">
+        <footer class="py-1 container">
+            <div class="row p-3">
                 <div class="col-2">
                     <h6>客服中心</h6>
                     <ul class="nav flex-column">
@@ -160,7 +151,7 @@ $product = $result->fetch_assoc();
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">徵才資訊</a></li>
                     </ul>
                 </div>
-
+    
                 <div class="col-2">
                     <h6>關於我們</h6>
                     <ul class="nav flex-column">
@@ -168,57 +159,82 @@ $product = $result->fetch_assoc();
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">品牌故事</a></li>
                     </ul>
                 </div>
-
+    
                 <div class="col-2">
                     <h6>金流服務</h6>
                     <ul class="nav flex-column">
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
                     </ul>
                 </div>
-
-                <div class="col-4 offset-1">
-                    <form>
-                        <h6>聯絡我們</h6>
-                        <div>
-                            <p>電子信箱：test@test.com</p>
-                            <p>電話：02-1234-5678</p>
-                            <p>傳真：02-1234-5678</p>
-                            <p>通訊地址：台北市信義區OOOOOOOOOOOOO</p>
-                        </div>
-                        <div class="d-flex w-100 ">
-                            <i class="bi bi-facebook"></i>
-                            <i class="bi bi-github"></i>
-                            <i class="bi bi-line"></i>
-                            <i class="bi bi-envelope-fill"></i>
-                            <br />
-                        </div>
-                    </form>
+    
+                <div class="col-4">
+                    <h6>聯絡我們</h6>
+                    <div>
+                        <p>電子信箱：test@test.com</p>
+                        <p>電話：02-1234-5678</p>
+                        <p>傳真：02-1234-5678</p>
+                        <p>通訊地址：台北市信義區OOOOOOOOOOOOO</p>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <h6>社群</h6>
+                    <p><i class="bi bi-facebook pe-2"></i> Facebook</p>
+                    <p><i class="bi bi-github pe-2"></i>Github</p>
+                    <p><i class="bi bi-line pe-2"></i>Line</p>
+                    <p><i class="bi bi-envelope-fill pe-2"></i>test@test.com</p>
                 </div>
             </div>
-
-            <div class="d-flex justify-content-between py-4 my-4 border-top">
+    
+            <div class="d-flex border-top">
                 <p>&copy; 2021 Company, Inc. All rights reserved.</p>
-                <ul class="list-unstyled d-flex">
-                    <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
-                                <use xlink:href="#twitter" />
-                            </svg></a></li>
-                    <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
-                                <use xlink:href="#instagram" />
-                            </svg></a></li>
-                    <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
-                                <use xlink:href="#facebook" />
-                            </svg></a></li>
-                </ul>
             </div>
         </footer>
-    </div>
+
+
+
 
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+        </script>
+
+    <!-- JQery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js"></script>
+
+
+    <script>
+        $(".add-btn").click(function () {
+            let msg =  "已加入購物車";
+            let id = $(this).data("id");
+            //console.log(id)
+            let formData = new FormData();
+            formData.append('id', id);
+            axios({
+                method: "post",
+                url: "/store/api/add-cart.php",
+                data: formData,
+                headers: { 'Content-Type': "multipart/form-data" }
+            }).
+                then(function (response) {
+                    console.log(response.data)
+                })
+                .catch(function (response) {
+                    console.log(response)
+                })
+            $("#message").text(msg);
+        })
+
+            // // 已加入購物車
+            // $(".add-btn").click(function(){
+            //         $("#msg").text("已加入購物車");
+            //     }
+            // );
+
     </script>
 </body>
 

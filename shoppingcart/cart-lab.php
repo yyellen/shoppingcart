@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once("../db_connect.php");
 ?>
 
@@ -94,7 +95,7 @@ require_once("../db_connect.php");
                     foreach($_SESSION["cart"] as $product):
                         $product_id =key($product);
                         $value=current($product );
-                        $sql="SELECT * FROM shop_products WHERE id='$product_id'";
+                        $sql="SELECT * FROM shop_products WHERE id='$product_id' ORDER BY id ASC";
                         $result = $conn->query($sql);
                         $row=$result->fetch_assoc();
                 ?>
@@ -137,20 +138,28 @@ require_once("../db_connect.php");
                     </div>
             
                     <form action="#" method="post">
+                    <?php
+                        if(isset($_SESSION["order"])):
+                            // 如果使用者資料存在就抓使用者資料
+                            is not null;
+                            foreach($_SESSION["order"] as $user):
+                              $user_id =key($user);
+                              $sql="SELECT * FROM shop_users WHERE id='$user_id'";
+                              $result = $conn->query($sql);
+                              $row=$result->fetch_assoc();
+                        ?>
             
                         <div class="row mb-3 pt-3">
                             <label for="inputname" class="text-right col-sm-3 col-form-label">收件人姓名</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputname">
-                                
-
+                                <input type="text" class="form-control" id="inputname" value="<?=$row["name"]?>">
                             </div>
                         </div>
             
-                        <div class="row mb-3">
+                        <div class="row mb-3 pt-3">
                             <label for="inputEmail3" class="text-right col-sm-3 col-form-label">手機號碼</label>
                             <div class="col-sm-9">
-                                <input type="email" class="form-control" id="inputEmail3">
+                                <input type="email" class="form-control" id="inputEmail3" value="<?=$row["phone"]?>">
                             </div>
                         </div>
             
@@ -165,8 +174,7 @@ require_once("../db_connect.php");
                             <label for="input_addres" class="text-right col-sm-3 col-form-label">收件地址</label>
                             
                             <div class="col-sm-9">
-
-                                <input type="text" class="form-control" id="input_addres">
+                                <input type="text" class="form-control" id="input_addres" value="<?=$row["adress"]?>">
                             </div>
                         </div>
 
@@ -186,31 +194,36 @@ require_once("../db_connect.php");
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="711">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="family">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     全家便利商店
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="711">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="OK">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     OK便利商店
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="711">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="home_delivery">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     宅配
                                 </label>
                             </div>
                         </div>
+
+                        <?php
+                        endforeach;
+                        endif;
+                        ?>
                     </form>
                 </div>
             </div>
 
 
             <div class="d-flex justify-content-end pt-3">
-                <a type="button" class=" btn btn-danger" href="結帳(清空php)">結帳</a>
+                <a type="button" class=" btn btn-danger" href="pay.php">結帳</a>
             </div>
 
         </div>
